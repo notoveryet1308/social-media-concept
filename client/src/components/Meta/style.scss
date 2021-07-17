@@ -1,0 +1,17 @@
+.Meta {
+  width: max-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .meta__data {
+    margin-left: 0.2rem;
+    font-size: 1.5rem;
+  }
+  .meta__data--link {
+    color: #1da1f2;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

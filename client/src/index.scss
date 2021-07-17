@@ -9,7 +9,24 @@
 
 html {
   font-size: 62.5%;
-  line-height: 1.6;
+  // line-height: 1.6;
   font-family: 'Noto Sans', sans-serif;
 }
 
+.icon {
+  font-size: 19px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a{
+  text-decoration: none;
+  display: block;
+}
+
+.bold {
+  font-weight: bold;
+}
