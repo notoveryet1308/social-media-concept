@@ -12,12 +12,14 @@ export const parseRequestUrl = () => {
 
 export const pageToBeRender = (resource) => {
   switch (resource) {
-    case '/home':
+    case 'home':
       return '/'
     case 'username':
       return '/username/:id/:action'
-    case '/search':
-      return '/search'
+    case 'search':
+      return 'search'
+    case 'profile-settings':
+      return '/profile-settings'
     default:
       return '/error404'
   }

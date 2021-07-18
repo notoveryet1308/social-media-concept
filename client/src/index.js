@@ -1,9 +1,11 @@
 import './index.scss'
 import { ProfilePage } from './pages/Profile/profile.js'
+import { ProfileSettings } from './pages/ProfileSetting'
 import { parseRequestUrl, pageToBeRender } from './util.js'
 
 const routes = {
   '/username/:id/:action': ProfilePage,
+  '/profile-settings': ProfileSettings
 }
 
 const router = () => {
@@ -13,8 +15,8 @@ const router = () => {
   if(page && response.action){
     page.beforeRender({action: response.action })
   }
-  root.innerHTML = page && page.render({href: response.url})
-  page && page.afterRender()
+  root.innerHTML = page && page?.render({href: response.url})
+  page && page.afterRender && page.afterRender()
 }
 
 window.addEventListener('load', router)

@@ -8,6 +8,7 @@ import {Tab} from "../../components/Tab"
 import './style.scss'
 
 import {Profile} from "../../ClientState/profilePage.js"
+import { ProfileHeader } from '../../components/ProfileHeader'
 
 
 // let editClick = (href)=>{
@@ -44,16 +45,16 @@ const ProfilePage = {
       joined,
       totalTweet,
     } = userdata
-    const ctx = this;
+
     return `
     <section class="Profile-container">
-      <header class="Profile-header">
-        ${BackButton.render()}
-        <div class="Profile-header__content">
-          ${Title.render({ title: name })}
-          ${Label_M.render({ label: `${totalTweet} Tweets` })}
-        </div>
-      </header>
+      ${ProfileHeader.render(
+        { 
+          heading: name, 
+          subHeading:`${totalTweet} Tweets`,
+          
+        }
+      )}
       <main class="Profile-details">
         <div class="Profile-details__cover" style="background-image:url(${cover})">
           <img
@@ -82,7 +83,7 @@ const ProfilePage = {
             <div class="Profile-detail__editOption">
               ${TertiaryButtonLink.render({
                 value: 'Edit Profile',
-                href: '/#/settings/profile',
+                href: '/#/profile-settings',
               })}
             </div>
           </div>

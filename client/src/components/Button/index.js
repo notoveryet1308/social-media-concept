@@ -1,9 +1,13 @@
 import './style.scss'
 
-export const ButtonTertiary = {
-  render: ({ value }) => {
-    return `<button class="btn tertiary-btn bold"> ${value} </button>`
-  },
+
+export const PrimaryButton = {
+
+  render:({display, href})=>{
+    return `
+      <a href="${href}" class="btn primary-btn primary-btn__link bold">${display}</a>
+    `
+  }
 }
 
 export const TertiaryButtonLink = {
@@ -36,3 +40,4 @@ export const BackButton = {
     `
   },
 }
+
