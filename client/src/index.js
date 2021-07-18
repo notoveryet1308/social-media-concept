@@ -3,15 +3,18 @@ import { ProfilePage } from './pages/Profile/profile.js'
 import { parseRequestUrl, pageToBeRender } from './util.js'
 
 const routes = {
-  '/username/:id': ProfilePage,
+  '/username/:id/:action': ProfilePage,
 }
 
 const router = () => {
   let response = parseRequestUrl()
   const page = routes[pageToBeRender(response.resource)]
   const root = document.getElementById('root')
-  root.innerHTML = page.render()
-  page.afterRender()
+  if(page && response.action){
+    page.beforeRender({action: response.action })
+  }
+  root.innerHTML = page && page.render({href: response.url})
+  page && page.afterRender()
 }
 
 window.addEventListener('load', router)

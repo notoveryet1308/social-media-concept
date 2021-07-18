@@ -6,10 +6,19 @@ export const ButtonTertiary = {
   },
 }
 
-export const ButtonTertiaryLink = {
+export const TertiaryButtonLink = {
   render: ({ value, href }) => {
-    return `<a href="${href}" class="btn tertiary-btn tertiary-btn__link bold"> ${value} </a>`
+    return `<a href="${href}"  class="btn tertiary-btn tertiary-btn__link bold"> ${value} </a>`
   },
+}
+
+export const GhostButtonLink = {
+  render: ({value, href, classname})=>{
+    return `
+      <a href="${href}" class="btn ghost-btn bold ${classname}">
+        ${value}
+      </a>`
+  }
 }
 
 export const BackButton = {

@@ -3,8 +3,10 @@ export const parseRequestUrl = () => {
   const request = url.split('/')
 
   return {
+    url: `/${document.location.hash}`,
     resource: request[1],
     id: request[2],
+    action:request[3]
   }
 }
 
@@ -13,7 +15,7 @@ export const pageToBeRender = (resource) => {
     case '/home':
       return '/'
     case 'username':
-      return '/username/:id'
+      return '/username/:id/:action'
     case '/search':
       return '/search'
     default:

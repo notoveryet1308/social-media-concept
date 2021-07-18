@@ -1,14 +1,33 @@
 import { userdata } from '../../data'
-import { BackButton, ButtonTertiaryLink } from '../../components/Button'
+import { BackButton, TertiaryButtonLink } from '../../components/Button'
 import { Title } from '../../components/Title'
 import { Label, Label_M } from '../../components/Label'
 import { Paragraph } from '../../components/Paragraph'
 import { Meta, MetaLink } from '../../components/Meta'
+import {Tab} from "../../components/Tab"
 import './style.scss'
 
+import {Profile} from "../../ClientState/profilePage.js"
+
+
+// let editClick = (href)=>{
+//   console.log({href});
+//   window.open(href)
+// },
 const ProfilePage = {
+  beforeRender: ({action})=>{
+    Profile.tabs.forEach(el => {
+      if(el.value === action){
+        el.isActive = true
+      }else if(el.value !== action){
+        el.isActive = false
+      }
+    })
+  },
+  
   afterRender: () => {
-    BackButton.afterRender()
+    BackButton.afterRender();
+    Tab.afterRender({data: Profile.tabs})
   },
   render: () => {
     const {
@@ -25,6 +44,7 @@ const ProfilePage = {
       joined,
       totalTweet,
     } = userdata
+    const ctx = this;
     return `
     <section class="Profile-container">
       <header class="Profile-header">
@@ -60,7 +80,7 @@ const ProfilePage = {
               </div>
             </div>
             <div class="Profile-detail__editOption">
-              ${ButtonTertiaryLink.render({
+              ${TertiaryButtonLink.render({
                 value: 'Edit Profile',
                 href: '/#/settings/profile',
               })}
@@ -87,6 +107,9 @@ const ProfilePage = {
           </div>
         </div>
       </main>
+      <section class="Profile__tab">
+        ${Profile.tabs.map(d => Tab.render({...d, href:`/#/username/rahulraz1308${d.url}`})).join(",")}
+      </section>
     </section>
     `
   },
