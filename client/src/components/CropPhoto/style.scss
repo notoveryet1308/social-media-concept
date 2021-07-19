@@ -1,0 +1,53 @@
+.image-crop__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.226);
+  overflow: hidden;
+  cursor: move;
+  z-index: 22;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.623);
+  }
+}
+.image-crop__content {
+  position: relative;
+  width: 100%;
+  height: 509px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-crop__imgHolder {
+  user-select: none;
+  position: absolute;
+  width: 100%;
+  height: 350px;
+  // background-image: url(../src/assets/images/codeing_pic.jpg);
+  background-position: center;
+  background-size: cover;
+  transition: all 300ms ease;
+  z-index: 0;
+  img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
+.image-crop__placeholder {
+  width: 100%;
+  height: 200px;
+  border: 4px solid #1da1f2;
+  z-index: 2;
+  box-shadow: rgb(230 236 240 / 70%) 0px 0px 0px 9999px;
+}

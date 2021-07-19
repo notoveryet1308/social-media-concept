@@ -41,7 +41,7 @@ export const ProfileSettings = {
         <div class="profile-settings__cover" style="background-image: url(${cover})">
           <div class="cover__actions">
             <div class="cover__actions--holder">
-              ${AddPhoto.render({fileId:"add-profile-cover"})}
+              ${AddPhoto.render({fileId:"profileCoverImg"})}
               <div class="cover_remove">
                 <i class="ph-x icon"></i>
               </div>
@@ -53,7 +53,7 @@ export const ProfileSettings = {
           <div class="dp_holder">
              <img src="${display}" />
              <div class="dp__actions--holder">
-              ${AddPhoto.render({fileId:"add-profile-display"})}
+              ${AddPhoto.render({fileId:"profileDisplayImg"})}
             </div>
           </div>
         </div>
