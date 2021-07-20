@@ -40,4 +40,20 @@ export const BackButton = {
     `
   },
 }
+export const PopupBackBtn = {
+  afterRender: () => {
+    const backBtn = document.getElementsByClassName('popupBack-btn')
+    backBtn[0].addEventListener('click', () => {
+      let popup = document.getElementById("popup")
+      popup.innerHTML = ""
+    })
+  },
+  render: ()=>{
+    return `
+      <button class="btn popupBack-btn">
+        <i class="ph-arrow-left icon"></i>
+      </button>
+    `
+  }
+}
 

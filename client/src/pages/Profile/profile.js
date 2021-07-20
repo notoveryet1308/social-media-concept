@@ -8,7 +8,7 @@ import {Tab} from "../../components/Tab"
 import './style.scss'
 
 import {Profile} from "../../ClientState/profilePage.js"
-import { ProfileHeader } from '../../components/ProfileHeader'
+import { ProfileHeader } from '../../components/Headers'
 
 
 // let editClick = (href)=>{

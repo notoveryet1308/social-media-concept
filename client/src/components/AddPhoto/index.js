@@ -7,10 +7,26 @@ export const AddPhoto = {
     const input = document.querySelector('.Add-photo input')
     addBtn[0].addEventListener('click', () => {
       input.click()
-      if (input.id && input.files[0]) {
-        const container = document.querySelector('.Add-photo')
-        container.insertAdjacentHTML('beforebegin', CropPhoto.render())
-        CropPhoto.afterRender({ inputId: input.id })
+    })
+
+    window.addEventListener('change', () => {
+      if (input.id) {
+        const container = document.querySelector('#popup')
+        container.insertAdjacentHTML('beforeend', CropPhoto.render())
+        
+        let imgFile = input.files[0]
+        console.log({imgFile});
+        var reader = new FileReader()
+        reader.addEventListener(
+          'load',
+          () => {
+            CropPhoto.afterRender({ src: reader.result })
+          },
+          false
+        )
+        if (imgFile) {
+          reader.readAsDataURL(imgFile)
+        }
       }
     })
   },

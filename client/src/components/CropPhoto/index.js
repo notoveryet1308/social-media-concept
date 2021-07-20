@@ -1,27 +1,22 @@
+import {  PopupHeader } from '../Headers';
 import './style.scss'
 export const CropPhoto = {
-  afterRender: ({ inputId }) => {
+  afterRender: ({ src }) => {
     let imgContainer = document.querySelector('.image-crop__container')
+    const imageCrop__placeholder = document.querySelector(".image-crop__placeholder");
+    const imageCrop__imgHolder = document.querySelector(".image-crop__imgHolder");
     const imgHolder = document.getElementById('imgHolder')
-    let inputEl = document.getElementById(inputId)
-    const previewImg = () => {
-      let preview = document.querySelector('img')
-      let imgFile = inputEl.files[0]
-      var reader = new FileReader()
-      reader.addEventListener(
-        'load',
-        () => {
-          preview.src = reader.result
-          imgHolder.style.backgroundImage = reader.result
-        },
-        false
-      )
-      if (imgFile) {
-        reader.readAsDataURL(imgFile)
-      }
-      console.log({ imgFile })
+    const previewImg = document.getElementById('previewImg');
+    
+    if(src){
+      imgHolder.style.backgroundImage = `url(${src})`
+      previewImg.src= src
+      imageCrop__placeholder.style.height= `${imgContainer.clientWidth/3}px`
+      imageCrop__placeholder.style.display = "block"
     }
-    inputEl.addEventListener('change', previewImg)
+    
+    
+    const delay = 1000
     const debounce = function (fn, d) {
       let timer
       return function () {
@@ -34,32 +29,47 @@ export const CropPhoto = {
       }
     }
 
-    const cropImage = (posY) => {
+    const cropImage = (posY, offSet) => {
       let currPosY = imgHolder.style.transform
         ? parseInt(imgHolder.style.transform.split(' ')[1].replace('px,', ''))
         : 0
-      if (currPosY + posY > -79 && currPosY + posY < 79) {
+      if (currPosY + posY > - offSet 
+            && currPosY + posY < offSet) {
         imgHolder.style.transform = `translate3d(0px, ${
           currPosY + posY
         }px, 0px)`
       }
     }
-    const delay = 1000
+
     imgContainer.addEventListener('pointermove', (e) => {
       if (e.pressure > 0) {
-        debounce(cropImage(e.movementY), delay)
+        const maxOffset = parseInt(( imageCrop__imgHolder.clientHeight - imageCrop__placeholder.clientHeight) /2);
+        debounce(cropImage(e.movementY, maxOffset), delay)
       }
     })
+
+    PopupHeader.afterRender();
   },
   render: () => {
     return `
-      <div class="image-crop__container">
-        <div class="image-crop__content">
-          <div class="image-crop__imgHolder" id="imgHolder">
-            <img src="" />
+      <div class="image-crop">
+       <div class="image-crop__header">
+        ${PopupHeader.render( 
+          { 
+          heading: "Edit Media", 
+          href: "/#/profile-settings", 
+          display:"Apply"
+          }
+        )}
+       </div>
+       <div class="image-crop__container">
+          <div class="image-crop__content">
+            <div class="image-crop__imgHolder" id="imgHolder">
+              <img id="previewImg" src="../../assets/images/loading.jpg" />
+            </div>
+            <div class="image-crop__placeholder"></div>
           </div>
-          <div class="image-crop__placeholder"></div>
-        </div>
+       </div>
       </div>
     `
   },

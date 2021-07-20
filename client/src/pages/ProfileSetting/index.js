@@ -1,4 +1,4 @@
-import { ProfileHeader } from "../../components/ProfileHeader"
+import { ProfileHeader } from "../../components/Headers"
 
 import"./style.scss"
 import {userdata} from "../../data/userdata.js"
@@ -51,7 +51,7 @@ export const ProfileSettings = {
         <div class="profile-settings__dp">
           <!-- More will come -->
           <div class="dp_holder">
-             <img src="${display}" />
+             <img draggable="false" src="${display}" />
              <div class="dp__actions--holder">
               ${AddPhoto.render({fileId:"profileDisplayImg"})}
             </div>
