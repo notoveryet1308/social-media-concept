@@ -1,4 +1,5 @@
 import {  PopupHeader } from '../Headers';
+import {userdata} from "../../data/userdata.js"
 import './style.scss'
 export const CropPhoto = {
   afterRender: ({ src }) => {
@@ -45,10 +46,38 @@ export const CropPhoto = {
       if (e.pressure > 0) {
         const maxOffset = parseInt(( imageCrop__imgHolder.clientHeight - imageCrop__placeholder.clientHeight) /2);
         debounce(cropImage(e.movementY, maxOffset), delay)
+        console.log({imgHolder: imageCrop__imgHolder.getBoundingClientRect()});
+        console.log({imageCrop__placeholder: imageCrop__placeholder.getBoundingClientRect()});
       }
     })
 
     PopupHeader.afterRender();
+    const applyBtn = document.querySelector(".apply-coverPhoto");
+    applyBtn.addEventListener("click", (e)=>{
+      const imgPlaceholderRect = imageCrop__placeholder.getBoundingClientRect()
+      const cropImageRect = imageCrop__imgHolder.getBoundingClientRect();
+      console.log(e.target);
+      const removePopup = document.querySelector(".popupBack-btn");
+      let canvas = document.createElement('canvas');
+      let ctx = canvas.getContext('2d')
+      const image = new Image();
+      image.onload = ()=>{
+        
+        const dpp_H = image.naturalHeight/imgPlaceholderRect.height;
+        const dpp_W = image.naturalWidth / imgPlaceholderRect.width;
+        const dpp_B = image.naturalHeight/  imgPlaceholderRect.bottom;
+        const cropX= 0;
+        const cropY = (Math.abs(imgPlaceholderRect.top - cropImageRect.top)* dpp_H);
+        const cropWidth= imgPlaceholderRect.width * dpp_W;
+        const cropHeight = image.naturalHeight - (Math.abs(cropImageRect.bottom - imgPlaceholderRect.bottom)* dpp_B);
+        console.log({cropY, cropWidth, cropHeight });
+        ctx.drawImage(image, cropX, cropY, cropWidth, cropHeight, 0, 0, imgPlaceholderRect.width, imgPlaceholderRect.height  );
+        const url = canvas.toDataURL("image/png", 1.0);
+        userdata.cover = url;
+       }
+      image.src = src
+      removePopup.click();
+    })
   },
   render: () => {
     return `
@@ -58,7 +87,8 @@ export const CropPhoto = {
           { 
           heading: "Edit Media", 
           href: "/#/profile-settings", 
-          display:"Apply"
+          display:"Apply",
+          btnIdentifier:"apply-coverPhoto"
           }
         )}
        </div>

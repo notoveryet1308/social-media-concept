@@ -29,7 +29,7 @@ export const PopupHeader = {
   afterRender: ()=>{
     PopupBackBtn.afterRender();
   },
-  render: ({heading, display, href, subHeading})=>{
+  render: ({heading, display, href, subHeading, btnIdentifier})=>{
     return `
      <header class="profile-header">
         <div class="profile-header__content">
@@ -40,7 +40,7 @@ export const PopupHeader = {
           </div> 
         </div>
         <div class="profile-header__btns">
-          ${display ? PrimaryButton.render({display, href}):""}
+          ${display ? PrimaryButton.render({display, href, classname: btnIdentifier}):""}
         </div>
      </header>
     `

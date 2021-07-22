@@ -3,9 +3,9 @@ import './style.scss'
 
 export const PrimaryButton = {
 
-  render:({display, href})=>{
+  render:({display, href, classname})=>{
     return `
-      <a href="${href}" class="btn primary-btn primary-btn__link bold">${display}</a>
+      <a href="${href}" class="btn primary-btn primary-btn__link bold ${classname}">${display}</a>
     `
   }
 }
