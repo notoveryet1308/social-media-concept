@@ -15,7 +15,7 @@ const router = () => {
   if(page && response.action){
     page.beforeRender({action: response.action })
   }
-  root.innerHTML = page && page?.render({href: response.url})
+  root.innerHTML = page ? page?.render({href: response.url}):""
   page && page.afterRender && page.afterRender()
 }
 

@@ -27,3 +27,7 @@ export const Tab = {
     `  
   }
 }
+
+export class TabClass {
+  
+}

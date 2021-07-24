@@ -1,0 +1,64 @@
+.TweetCard{
+  position: relative;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  .Tweet__displayPic{
+    position: relative;
+    min-width: 8rem;
+    display: flex;
+    justify-content: center;
+
+    .Tweet__displayPic--holder{
+      width: 4.8rem;
+      height: 4.8rem;
+      border-radius: 50%;
+      background: chocolate;
+    }
+  }
+  .Tweet__content{
+    position: relative;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+
+    .Tweet__userDetail{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      & > div {
+        margin-right: 1rem;
+      }
+    }
+    .Tweet__textBox{
+      width: 100%;
+    }
+
+    .Tweet__hashtag{
+      display: flex;
+      .Tweet__hashtag{
+        font-size: 1.5rem;
+        color: #159Be0;
+      }
+       &  > a{
+         margin-right: 1rem;
+       }
+    }
+
+    .Tweet__actions{
+      margin: 1rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .Tweet__actions--content{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .Tweet__actions--count{
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}

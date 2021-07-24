@@ -1,7 +1,7 @@
 import { userdata } from '../../data'
 import { BackButton, TertiaryButtonLink } from '../../components/Button'
 import { Title } from '../../components/Title'
-import { Label, Label_M } from '../../components/Label'
+import { Label, } from '../../components/Label'
 import { Paragraph } from '../../components/Paragraph'
 import { Meta, MetaLink } from '../../components/Meta'
 import {Tab} from "../../components/Tab"
@@ -9,12 +9,9 @@ import './style.scss'
 
 import {Profile} from "../../ClientState/profilePage.js"
 import { ProfileHeader } from '../../components/Headers'
+import { TweetCard } from '../../components/TweetCard'
 
 
-// let editClick = (href)=>{
-//   console.log({href});
-//   window.open(href)
-// },
 const ProfilePage = {
   beforeRender: ({action})=>{
     Profile.tabs.forEach(el => {
@@ -51,8 +48,7 @@ const ProfilePage = {
       ${ProfileHeader.render(
         { 
           heading: name, 
-          subHeading:`${totalTweet} Tweets`,
-          
+          subHeading:`${totalTweet} Tweets`,  
         }
       )}
       <main class="Profile-details">
@@ -109,7 +105,10 @@ const ProfilePage = {
         </div>
       </main>
       <section class="Profile__tab">
-        ${Profile.tabs.map(d => Tab.render({...d, href:`/#/username/rahulraz1308${d.url}`})).join(",")}
+        ${Profile.tabs.map(d => Tab.render({...d, href:`/#/username/rahulraz1308${d.url}`})).join("\n")}
+      </section>
+      <section class="Profile__active--tab">
+        ${TweetCard.render()}
       </section>
     </section>
     `
