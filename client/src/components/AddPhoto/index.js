@@ -9,7 +9,7 @@ export const AddPhoto = {
       input.click()
     })
 
-    window.addEventListener('change', () => {
+    input.addEventListener('change', () => {
       if (input.id) {
         const container = document.querySelector('#popup')
         container.insertAdjacentHTML('beforeend', CropPhoto.render())

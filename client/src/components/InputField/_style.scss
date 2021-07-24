@@ -1,0 +1,51 @@
+.inputfield{
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid #e5e5e5;
+  border-radius: .4rem;
+  .inputcount{
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    // width: 6rem;
+    padding: 1rem;
+    // background: #000;
+    height: 3rem;
+    display: none;
+  }
+  label{
+    font-size: 1.3rem;
+    color: #536471;
+  }
+
+
+  &:focus-within{
+    border: 2px solid #1da1f2;
+  }
+}
+
+.Input-field{
+  input{
+    border: none;
+    font-size: 1.7rem;
+    padding-top: .5rem;
+    outline: none;
+    color: rgb(15, 20, 25);
+  }
+}
+
+.Textarea-field{
+  textarea{
+    resize: none;
+    height: 6.6rem;
+    border: none;
+    font-size: 1.7rem;
+    padding-top: .5rem;
+    outline: none;
+    color: rgb(15, 20, 25);
+    font-family: 'Noto Sans', sans-serif;
+  }
+}

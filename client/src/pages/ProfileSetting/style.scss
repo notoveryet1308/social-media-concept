@@ -122,3 +122,10 @@
     }
   }
 }
+
+.profile-setings__details{
+  padding: 1rem;
+  &> div {
+    margin-bottom: 2.5rem;
+  }
+}

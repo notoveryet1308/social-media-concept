@@ -3,13 +3,25 @@ import { ProfileHeader } from "../../components/Headers"
 import"./style.scss"
 import {userdata} from "../../data/userdata.js"
 import { AddPhoto } from "../../components/AddPhoto"
+import { InputArea, TextArea} from "../../components/InputField"
+
+const textAreaBio = new TextArea("user-bio");
+const inputUserName = new InputArea("user-name");
+const inputUserLocation = new InputArea("user-location")
+const inputUserWebsite = new InputArea("user-website")
+
 
 export const ProfileSettings = {
 
   afterRender: ()=>{
     AddPhoto.afterRender();
-    ProfileHeader.afterRender()
+    ProfileHeader.afterRender();
+    textAreaBio.afterRender()
+    inputUserName.afterRender()
+    inputUserLocation.afterRender()
+    inputUserWebsite.afterRender()
   },
+
 
   render:()=>{
 
@@ -19,13 +31,9 @@ export const ProfileSettings = {
       display,
       cover,
       username,
-      followers,
-      following,
       location,
       website,
       born,
-      joined,
-      totalTweet,
     } = userdata
 
     return `
@@ -33,7 +41,7 @@ export const ProfileSettings = {
       ${ProfileHeader.render( 
         { 
           heading:"Edit Profile", 
-          href:"/#/username/rahulraz1308",
+          href:`/#/username/${username}`,
           display: "save"
         }
       )}
@@ -59,20 +67,47 @@ export const ProfileSettings = {
         </div>
       </div>
       <div class="profile-setings__details">
-        <div class="Profile-ettings__name">
-          <div class="Input-field">
-            <label>Name</label>
-            <input placeholder="your name"/>
-          </div>
+        <div class="Profile-settings__name">
+          ${inputUserName.render(
+            { 
+              label: "Name", 
+              placeholder:"Enter your name", 
+              value: name,
+              maxCharLength: 50
+            })
+          }
         </div>
-        <div class="Profile-ettings__bio">
-          <div class="TextArea-field">
-            <label>BIO</label>
-            <textarea >Helo</textarea>
-          </div>
+        <div class="Profile-settings__bio">
+          ${textAreaBio.render({
+            label:'Bio',
+            maxCharLength: 150,
+            value: bio,
+            textareaId:"user-bio"
+          })}
+        </div>
+        <div class="Profile-settings__location">
+          ${inputUserLocation.render(
+            { 
+              label: "Location", 
+              placeholder:"your location", 
+              value:location,
+              maxCharLength: 30
+            })
+          }
+        </div>
+        <div class="Profile-settings__website">
+          ${inputUserWebsite.render(
+            { 
+              label: "Website", 
+              placeholder:"your website", 
+              value:website,
+              maxCharLength: 30
+            })
+          }
         </div>
       </div>
   </div>
     `
   }
 }
+
