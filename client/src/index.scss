@@ -32,3 +32,10 @@ a{
 .bold {
   font-weight: bold;
 }
+
+.main-containter{
+  position: relative;
+  width: max-content;
+  margin: 0 auto;
+  display: flex;
+}

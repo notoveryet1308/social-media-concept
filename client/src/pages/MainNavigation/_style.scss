@@ -1,0 +1,21 @@
+.MainNavigation{
+  position: sticky;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  width: 10rem;
+  height: 100vh;
+  padding-top: .5rem;
+  display: flex;
+  justify-content: center;
+
+
+  // background-color: chocolate;
+}
+
+@media screen and (min-width: 1300px) {
+
+  .MainNavigation{
+    width: 25.1rem;
+  }
+}

@@ -1,0 +1,63 @@
+.MainNavLink{
+  width: max-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1.5rem 1.5rem;
+  border-radius: 50%;
+  .icon__nav{
+    font-size: 2.6rem;
+    color: #000;
+    font-weight: bold;
+  }
+  .MainNav__name{
+    display: none;
+    font-size: 2rem;
+    color: #000;
+    padding-left: 1rem;
+  }
+  &:hover{
+    transition: background-color 300ms ease;
+    background-color: rgba(29, 160, 242, 0.137);
+    .icon__nav{
+      color: #1da1f2;
+    }
+    .MainNav__name{
+      color: #1da1f2;
+    }
+
+  }
+}
+
+.main__nav--active{
+  .icon__nav{
+    color: #1da1f2;
+  }
+  .MainNav__name{
+    color: #1da1f2;
+  }
+}
+
+.ManiNav__logo{
+  position: relative;
+  width: 100%;
+  .logoBox{
+    width: 3rem;
+    height: 3rem;
+    img{
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .MainNavLink{
+    border-radius: 4rem;
+    .MainNav__name{
+      display: block;
+    }
+  }
+}
+// .main__nav--disabled{
+//   background-color: #fff;
+// }

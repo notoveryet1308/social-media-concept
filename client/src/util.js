@@ -13,7 +13,7 @@ export const parseRequestUrl = () => {
 export const pageToBeRender = (resource) => {
   switch (resource) {
     case 'home':
-      return '/'
+      return '/home'
     case 'username':
       return '/username/:id/:action'
     case 'search':
