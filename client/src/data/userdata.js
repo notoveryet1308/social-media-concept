@@ -1,8 +1,9 @@
 import coverImg from '../assets/images/codeing_pic.jpg'
+import twitterCurBg from "../assets/images/bg.jpg"
 import displayImg from '../assets/images/me.jpg'
 export const userdata = {
   name: 'Rahul Raj',
-  cover: coverImg,
+  cover: twitterCurBg,
   display: displayImg,
   totalTweet: 20,
   username: '@rahulraz',

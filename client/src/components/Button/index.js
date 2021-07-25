@@ -34,8 +34,8 @@ export const BackButton = {
   },
   render: () => {
     return `
-     <button class="btn back-btn">
-      <i class="ph-arrow-left icon"></i>
+     <button class="btn back-btn roundShape-btn">
+      <i class="ph-arrow-left-bold icon" ></i>
      </button>
     `
   },
@@ -50,7 +50,7 @@ export const PopupBackBtn = {
   },
   render: ()=>{
     return `
-      <button class="btn popupBack-btn">
+      <button class="btn popupBack-btn roundShape-btn">
         <i class="ph-arrow-left icon"></i>
       </button>
     `

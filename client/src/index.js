@@ -1,9 +1,11 @@
 import './index.scss'
+import { Overview } from './pages/Overview'
 import { Home } from './pages/Home'
 import { MainNavigation } from './pages/MainNavigation'
 import { ProfilePage } from './pages/Profile/profile.js'
 import { ProfileSettings } from './pages/ProfileSetting'
 import { parseRequestUrl, pageToBeRender } from './util.js'
+
 
 
 const routes = {
@@ -23,10 +25,11 @@ const router = () => {
   if(page && response.action){
     page.beforeRender({action: response.action })
   }
-  root.innerHTML = page ? page?.render({href: response.url}):""
+  root.innerHTML = page ? page?.render({href: response.url}): null
+  root.insertAdjacentHTML("beforeend", Overview.render())
   page && page.afterRender && page.afterRender()
   console.log(response.resource);
-  mainNavContainer.innerHTML = ""
+  mainNavContainer.innerHTML = null
   mainNavContainer.insertAdjacentHTML("afterbegin", MainNavigation.render({activeNav: response.resource}));
 }
 

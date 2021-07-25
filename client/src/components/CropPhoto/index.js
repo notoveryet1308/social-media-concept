@@ -61,6 +61,7 @@ export const CropPhoto = {
       let canvas = document.createElement('canvas');
       let ctx = canvas.getContext('2d')
       const image = new Image();
+      
       image.onload = ()=>{
         
         const dpp_H = image.naturalHeight/imgPlaceholderRect.height;
@@ -68,12 +69,21 @@ export const CropPhoto = {
         const dpp_B = image.naturalHeight/  imgPlaceholderRect.bottom;
         const cropX= 0;
         const cropY = (Math.abs(imgPlaceholderRect.top - cropImageRect.top)* dpp_H);
-        const cropWidth= imgPlaceholderRect.width * dpp_W;
+        const cropWidth= imgPlaceholderRect.width;
         const cropHeight = image.naturalHeight - (Math.abs(cropImageRect.bottom - imgPlaceholderRect.bottom)* dpp_B);
         console.log({cropY, cropWidth, cropHeight });
-        ctx.drawImage(image, cropX, cropY, cropWidth, cropHeight, 0, 0, imgPlaceholderRect.width, imgPlaceholderRect.height  );
-        const url = canvas.toDataURL("image/png", 1.0);
-        userdata.cover = url;
+        Promise.all([createImageBitmap(image, cropX, cropY, image.naturalWidth, cropHeight, {
+          resizeWidth: 600,
+          resizeHeight: 200,
+          resizeQuality:"high"
+        })]).then((img)=>{
+          ctx.drawImage(img[0], 0, 0);
+          const url = canvas.toDataURL("image/png", 1.0);
+          console.log({url, img});
+          userdata.cover = url;
+        })
+        // ctx.drawImage(image, cropX, cropY, cropWidth, cropHeight, 0, 0, imgPlaceholderRect.width, imgPlaceholderRect.height  ]);
+       
        }
       image.src = src
       removePopup.click();

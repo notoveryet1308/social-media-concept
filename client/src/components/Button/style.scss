@@ -22,6 +22,11 @@
   padding: 1rem 1.5rem;
   border: 1px solid #1da1f2;
   border-radius: 2rem;
+  transition: background-color 300ms ease;
+  &:hover{
+    background-color: rgba(29, 160, 242, 0.1);
+    transition: background-color 300ms ease;
+  }
 }
 
 .ghost-btn{
@@ -35,5 +40,24 @@
   &:hover{
     background-color: rgba(29, 160, 242, 0.247);
     transition: background-color 300ms ease;
+  }
+}
+
+.roundShape-btn{
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  border-radius: 50%;
+
+  &:hover{
+    background-color: rgba(29, 160, 242, 0.2);
+    transition: all 300ms ease;
+    .icon{
+      color: #1da1f2;
+      
+    }
   }
 }

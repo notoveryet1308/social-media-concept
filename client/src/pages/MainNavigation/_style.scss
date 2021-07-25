@@ -5,7 +5,7 @@
   overflow: hidden;
   width: 10rem;
   height: 100vh;
-  padding-top: .5rem;
+  // padding-top: .5rem;
   display: flex;
   justify-content: center;
 
@@ -16,6 +16,7 @@
 @media screen and (min-width: 1300px) {
 
   .MainNavigation{
-    width: 25.1rem;
+    width: 27.5rem;
+    padding: 0 1.2rem;
   }
 }

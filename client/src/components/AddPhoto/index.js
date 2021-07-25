@@ -12,6 +12,7 @@ export const AddPhoto = {
     input.addEventListener('change', () => {
       if (input.id) {
         const container = document.querySelector('#popup')
+        console.log({container});
         container.insertAdjacentHTML('beforeend', CropPhoto.render())
         
         let imgFile = input.files[0]
