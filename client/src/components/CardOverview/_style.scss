@@ -1,0 +1,49 @@
+.CardOverview{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+  cursor: pointer;
+  transition: background 300ms ease ;
+  &:hover{
+    background: rgb(236, 236, 236);
+    transition: background 300ms ease ;
+  }
+}
+
+.CardOverview__details{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.CardOverview__title{
+  margin: .5rem 0;
+}
+.CardOverview__trending{
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .CardOverview__trending--with{
+    margin-left: 1rem;
+    a{
+      text-decoration: none;
+      color: #1da1f2;
+      font-size: 1.3rem;
+
+    }
+  }
+}
+
+.CardOverview__media{
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  img{
+    max-width: 100%;
+  }
+}
