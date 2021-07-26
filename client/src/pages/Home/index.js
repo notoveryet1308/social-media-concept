@@ -1,8 +1,18 @@
+import { CreateTweet } from "../../components/CreateTweet"
+import {Title} from "../../components/Title"
 import "./_style.scss"
+
 export const Home = {
   render: ()=>{
     return `
-      <h1>HOME </h1>
+      <div class="Home">
+        <header class="Home__header">
+           ${Title.render({title:"Home"})}
+        </header>
+        <div class="Home__createTweet">
+          ${CreateTweet.render()}
+        </div>
+      </div>
     `
   }
 }
