@@ -3,6 +3,9 @@ import {Title} from "../../components/Title"
 import "./_style.scss"
 
 export const Home = {
+  afterRender: ()=>{
+    CreateTweet.afterRender();
+  },
   render: ()=>{
     return `
       <div class="Home">
