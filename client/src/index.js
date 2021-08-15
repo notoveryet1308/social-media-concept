@@ -22,9 +22,11 @@ const router = () => {
   }
   const page = routes[pageToBeRender(response.resource)]
   const root = document.getElementById('root')
+  
   if(page && response.action){
     page.beforeRender({action: response.action })
   }
+  console.log({root, page});
   root.innerHTML = page ? page?.render({href: response.url}): null
   root.insertAdjacentHTML("beforeend", Overview.render())
   page && page.afterRender && page.afterRender()

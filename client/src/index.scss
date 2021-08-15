@@ -45,12 +45,20 @@ a{
   
 }
 
-.main-containter{
+.content{
   position: relative;
   max-width: 126.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-containter{
+ 
   margin: 0 auto;
   display: flex;
+  
 }
+
 
 #root {
   width: 100%;

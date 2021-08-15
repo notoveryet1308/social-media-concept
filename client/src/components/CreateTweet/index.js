@@ -1,7 +1,6 @@
 import pic from '../../assets/images/codeing_pic.jpg'
 import './_style.scss'
 import { userdata } from '../../data/userdata'
-import { Title_M } from '../Title'
 import { PrimaryButton } from '../Button'
 
 export const CreateTweet = {
