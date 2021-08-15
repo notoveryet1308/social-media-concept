@@ -1,4 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Roboto:wght@700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -10,7 +10,6 @@
 
 html {
   font-size: 62.5%;
-  // line-height: 1.6;
   font-family: 'Noto Sans', sans-serif;
 }
 
@@ -47,21 +46,27 @@ a{
 
 .content{
   position: relative;
-  max-width: 126.1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.main-containter{
- 
-  margin: 0 auto;
-  display: flex;
-  
-}
-
-
-#root {
   width: 100%;
   display: flex;
+  justify-content: center;
+}
+
+.root-container{
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+#root {
+  position: relative;
+  display: flex;
   justify-content: space-between;
+  flex-direction: row;
+  column-gap: 4rem;
+}
+
+.head-container{
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+ 
 }

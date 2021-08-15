@@ -1,16 +1,16 @@
-.MainNavLink{
-  width: max-content;
+.HeadNavigationLink{
+  width:max-content;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 1.5rem 1.5rem;
-  border-radius: 50%;
+  padding: 1.5rem;
+  border-radius: 4rem;
   .icon__nav{
     font-size: 2.6rem;
     color: #000;
     font-weight: bold;
   }
-  .MainNav__name{
+  .HeadNav__name{
     display: none;
     font-size: 2rem;
     color: #000;
@@ -22,26 +22,24 @@
     .icon__nav{
       color: #1da1f2;
     }
-    .MainNav__name{
+    .HeadNav__name{
       color: #1da1f2;
     }
 
   }
 }
 
-.main__nav--active{
+.Head__nav--active{
   .icon__nav{
     color: #1da1f2;
   }
-  .MainNav__name{
+  .HeadNav__name{
     color: #1da1f2;
   }
 }
 
-.ManiNav__logo{
-  position: relative;
-  padding: 1rem;
-  // width: 100%;
+.HeadNav__logo{
+  // padding: 1.5rem;
   .logoBox{
     width: 3rem;
     height: 3rem;
@@ -52,13 +50,15 @@
 }
 
 @media screen and (min-width: 1300px) {
-  .MainNavLink{
+  .HeadNavigationLink{
     border-radius: 4rem;
-    .MainNav__name{
+    padding: 1rem;
+    // background-color: #333;
+    .HeadNav__name{
       display: block;
     }
   }
 }
-// .main__nav--disabled{
+// .Head__nav--disabled{
 //   background-color: #fff;
 // }

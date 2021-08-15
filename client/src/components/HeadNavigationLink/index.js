@@ -1,12 +1,12 @@
-import { Title } from "../Title"
+
 import "./_style.scss"
 
-export const MainNavLink = {
+export const HeadNavigationLink = {
   render: ({href, icon, display, value, activeNav, logo})=>{
 
     if(logo){
       return `
-        <a href="${href}" class="MainNavLink ManiNav__logo">
+        <a href="${href}" class="HeadNavigationLink HeadNav__logo">
           <div class="logoBox">
             <img src="${logo}" alt="logo"/>
           </div>
@@ -14,9 +14,9 @@ export const MainNavLink = {
       `
     }else{
       return `
-        <a class="MainNavLink ${activeNav === value ? "main__nav--active":"main__nav--disabled"}" href="${href}">
+        <a class="HeadNavigationLink ${activeNav === value ? "Head__nav--active":"Head__nav--disabled"}" href="${href}">
           <i class="${icon} icon__nav"></i>
-          <h1 class="MainNav__name"> ${display}</h1>
+          <h1 class="HeadNav__name"> ${display}</h1>
         </a>
       `
     }
