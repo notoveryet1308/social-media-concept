@@ -28,6 +28,8 @@
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "@editorjs/editorjs": "^2.22.2",
+    "emoji-picker-element": "^1.8.1",
+    "random-avatar-generator": "^2.0.0",
     "sass": "^1.35.2"
   }
 }

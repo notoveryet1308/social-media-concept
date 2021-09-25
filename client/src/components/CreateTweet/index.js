@@ -1,40 +1,91 @@
+import 'emoji-picker-element'
 import pic from '../../assets/images/codeing_pic.jpg'
 import './_style.scss'
 import { userdata } from '../../data/userdata'
 import { PrimaryButton } from '../Button'
+import homeTweets from '../../ClientState/homeTweets'
+import { TweetCard } from '../TweetCard'
 
 export const CreateTweet = {
-  afterRender: ()=>{
-    const mediaContainer = document.querySelector(".CreateTweet__userMediaDisplay")
-    const mediaInfo = document.querySelector(".CreateTweet__userMediaInfo")
-    const mediaRemoveBtn = document.querySelector(".CreateTweet__removeMediaBtn")
-    mediaRemoveBtn.addEventListener("click", ()=>{
-      mediaContainer.style.backgroundImage = "none";
-      mediaContainer.style.display="none"
-      mediaInfo.style.display="none"
-    })
+	afterRender: ({ insertTweetContainer }) => {
+		const userTweetInput = {
+			userTextInput: null,
+			userMediaInput: null,
+			fullname: 'Rahul Raj',
+			username: 'rahulraz1308',
+		}
+		const mediaContainer = document.querySelector(
+			'.CreateTweet__userMediaDisplay',
+		)
+		const mediaInfo = document.querySelector('.CreateTweet__userMediaInfo')
+		const mediaRemoveBtn = document.querySelector(
+			'.CreateTweet__removeMediaBtn',
+		)
 
-    const imgInputBtn  = document.querySelector(".CraeteTweet__toolbar--ImageInput")
-    const imgInput = document.getElementById("CraeteTweet__ImageInput--input")
-    imgInputBtn.addEventListener("click", ()=>{
-      imgInput.click();
-    })
+		const emojiInput = document.querySelector(
+			'.CraeteTweet__toolbar--EmojiInput',
+		)
+		const tweetInputText = document.querySelector('#tweetInputText')
+		const tweetInputMedia = document.querySelector('#CreateTweet__mediaInput')
+		const emojiPicker = document.querySelector('emoji-picker')
+		const createTweet = document.querySelector('.CreateTweet__toolbar--create')
 
-    imgInput.addEventListener("input", ()=>{
-      const file = imgInput.files[0];
-      const reader = new FileReader()
-      reader.addEventListener("load", ()=>{
-        mediaContainer.style.backgroundImage = `url(${reader.result})`;
-        mediaContainer.style.display="block"
-        mediaInfo.style.display="flex"
-      })
-      if(file){
-        reader.readAsDataURL(file)
-      }
-    })
-  },
-  render: () => {
-    return `
+		emojiInput.addEventListener('click', (e) => {
+			console.log(e.target)
+			emojiPicker.style.display = 'block'
+		})
+		mediaRemoveBtn.addEventListener('click', () => {
+			mediaContainer.style.backgroundImage = 'none'
+			mediaContainer.style.display = 'none'
+			mediaInfo.style.display = 'none'
+		})
+
+		const imgInputBtn = document.querySelector(
+			'.CraeteTweet__toolbar--ImageInput',
+		)
+		const imgInput = document.getElementById('CraeteTweet__ImageInput--input')
+
+		emojiPicker.addEventListener('emoji-click', (e) => {
+			console.log(e.detail)
+			tweetInputText.value = tweetInputText.value.concat(e.detail.emoji.unicode)
+			emojiPicker.style.display = 'none'
+		})
+		imgInputBtn.addEventListener('click', () => {
+			imgInput.click()
+		})
+
+		imgInput.addEventListener('input', () => {
+			const file = imgInput.files[0]
+			const reader = new FileReader()
+			reader.addEventListener('load', () => {
+				mediaContainer.style.backgroundImage = `url(${reader.result})`
+				mediaContainer.style.display = 'block'
+				mediaInfo.style.display = 'flex'
+				userTweetInput.userMediaInput = reader.result
+			})
+			if (file) {
+				reader.readAsDataURL(file)
+			}
+		})
+
+		createTweet.addEventListener('click', (event) => {
+			const userTextInput = tweetInputText.value
+			userTweetInput.userTextInput = userTextInput
+
+			homeTweets.unshift({ ...userTweetInput })
+			insertTweetContainer.innerHTML = null
+			insertTweetContainer.insertAdjacentHTML(
+				'beforeend',
+				homeTweets.map((tweet) => TweetCard.render({ ...tweet })).join('\n'),
+			)
+			tweetInputText.value = ''
+			mediaContainer.style.backgroundImage = null
+			mediaContainer.style.display = 'none'
+			mediaInfo.style.display = 'none'
+		})
+	},
+	render: () => {
+		return `
        <div class="CreateTweet">
          <div class="CreateTweetContainer">
            <div class="CreateTweet__left">
@@ -61,7 +112,7 @@ export const CreateTweet = {
                      </a>
                   </div>
                   <div class="CreateTweet__userMediaInfo--addDescription">
-                     <a href="/#/">
+                     <a>
                      <i class="ph-note icon_s"></i>
                       <span class="description">Add description</span>
                      </a>
@@ -70,7 +121,7 @@ export const CreateTweet = {
              </div>
              <div class="CreateTweet__actions">
                <div class="CreateTweet__info">
-                 <a href="/#/" class="CreateTweet__info--link">
+                 <a  class="CreateTweet__info--link">
                    <i class="ph-globe-hemisphere-west-fill icon"></i>
                    <span>Everyone can reply</span>
                  </a>
@@ -87,12 +138,18 @@ export const CreateTweet = {
                     <div class="CraeteTweet__toolbar--EmojiInput toolbarItem">
                       <i class="ph-smiley icon_L CreateTweetIcon"></i>
                     </div>
+                    <div class="emoji-box">
+                      <emoji-picker></emoji-picker>
+                    </div>
                     <div class="CraeteTweet__toolbar--ScheduleInput toolbarItem">
                       <i class="ph-calendar-plus icon_L CreateTweetIcon"></i>
                     </div>
                   </div>
                   <div class="CreateTweet__toolbar--create">
-                    ${PrimaryButton.render({href: "/#/", display:"Tweet"})}
+                    ${PrimaryButton.render({
+											href: '/#/home',
+											display: 'Tweet',
+										})}
                   </div>
                </div>
              </div>
@@ -100,7 +157,7 @@ export const CreateTweet = {
          </div>
        </div>
     `
-  },
+	},
 }
 
 // style="background-image: url(${pic})"
