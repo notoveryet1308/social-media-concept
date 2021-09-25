@@ -1,10 +1,10 @@
 .Home{
-  // width: 60rem;
+  // min-width: 60rem;
   width: max-content;
   position: relative;
   min-height: 100vh;
   border-right: 1px solid #e5e5e5;
-  border-left: 1px solid #e5e5e5;
+  // border-left: 1px solid #e5e5e5;
   
   .Home__header{
     position: sticky;
@@ -27,4 +27,11 @@
   position: relative;
   background: rgb(243, 243, 243);
   padding-bottom: 1.5rem;
+}
+
+.Home__tweets{
+  position: relative;
+  width: 100%;
+  min-height: 50rem;
+  padding: 1.5rem;
 }

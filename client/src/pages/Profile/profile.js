@@ -45,12 +45,10 @@ const ProfilePage = {
 
     return `
     <section class="Profile-container">
-      ${ProfileHeader.render(
-        { 
-          heading: name, 
-          subHeading:`${totalTweet} Tweets`,  
-        }
-      )}
+      ${ProfileHeader.render({
+				heading: name,
+				subHeading: `${totalTweet} Tweets`,
+			})}
       <main class="Profile-details">
         <div class="Profile-details__cover" style="background-image:url(${cover})">
           <img
@@ -78,9 +76,9 @@ const ProfilePage = {
             </div>
             <div class="Profile-detail__editOption">
               ${TertiaryButtonLink.render({
-                value: 'Edit Profile',
-                href: '/#/profile-settings',
-              })}
+								value: 'Edit Profile',
+								href: '/#/profile-settings',
+							})}
             </div>
           </div>
           <div class="Profile-details__bio">
@@ -105,10 +103,19 @@ const ProfilePage = {
         </div>
       </main>
       <section class="Profile__tab">
-        ${Profile.tabs.map(d => Tab.render({...d, href:`/#/username/rahulraz1308${d.url}`})).join("\n")}
+        ${Profile.tabs
+					.map((d) =>
+						Tab.render({ ...d, href: `/#/username/rahulraz1308${d.url}` }),
+					)
+					.join('\n')}
       </section>
       <section class="Profile__active--tab">
-        ${TweetCard.render()}
+        ${TweetCard.render({
+					userMediaInput: '',
+					userTextInput: 'Twitter developer API TEST 3',
+					fullname: 'Rahul Raj',
+					username: 'rahulraz1308',
+				})}
       </section>
     </section>
     `
