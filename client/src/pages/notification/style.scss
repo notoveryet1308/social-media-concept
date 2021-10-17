@@ -1,0 +1,22 @@
+.notification-container{
+  min-width: 36rem;
+  width: 100%;
+  min-height:100vh;
+  max-width: 60rem;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+}
+
+@media screen and (min-width: 361px){
+  .notification-container{
+    width: 100%;
+  }
+}
+
+
+@media screen and (min-width: 600px){
+  .notification-container{
+    padding: 0 2rem;
+    width: 60rem;
+  }
+}

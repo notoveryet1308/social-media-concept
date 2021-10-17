@@ -2,7 +2,8 @@
 .Tab{
   // width: max-content;
   position: relative;
-  padding: 0 1.6rem;
+  // padding: 0 1.6rem;
+  // border: 1px solid;
   &:hover{
     background-color: rgba(29, 160, 242, 0.247);
     // transition: background-color 300ms ease;
@@ -20,7 +21,7 @@
     .tab-name{
       display: block;
       padding: 1.4rem 0;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: #536471;
     }
 
