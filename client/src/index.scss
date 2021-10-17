@@ -8,6 +8,7 @@
   user-select: none;
 }
 
+
 html {
   font-size: 62.5%;
   font-family: 'Noto Sans', sans-serif;
@@ -70,4 +71,23 @@ a{
   display: flex;
   justify-content: flex-end;
  
+}
+
+.under-work{
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+  &--info{
+    font-size: 2rem;
+  }
+  &--suggestion{
+    font-size: 1.8rem;
+    background: #239de9d8;
+    padding: 5px 2rem;
+    margin-top: 2rem;
+    color: rgb(255, 255, 255);
+  }
 }

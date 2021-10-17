@@ -1,6 +1,6 @@
 .Home{
   // min-width: 60rem;
-  width: max-content;
+  width: 36rem;
   position: relative;
   min-height: 100vh;
   border-right: 1px solid #e5e5e5;
@@ -34,4 +34,10 @@
   width: 100%;
   min-height: 50rem;
   padding: 1.5rem;
+}
+
+@media screen and (min-width: 600px){
+  .Home{
+    width: 60rem;
+  }
 }

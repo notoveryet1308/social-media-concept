@@ -1,11 +1,24 @@
 .Profile-container {
-  max-width: 60rem;
-  min-height: 100vh;
-  // margin: 0 auto;
+  width: 36rem;
+  min-height:100vh;
   position: relative;
   border-left: 1px solid #e5e5e5;
   border-right: 1px solid #e5e5e5;
   background: #fff;
+  padding-bottom: 6rem;
+}
+
+@media screen and (min-width: 480px){
+  .Profile-container{
+    padding-bottom: 0rem;
+ }
+  
+}
+
+@media screen and (min-width: 600px){
+  .Profile-container{
+    width: 60rem;
+  }
 }
 
 .Profile-header {
@@ -114,8 +127,8 @@
   position: relative;
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  // flex-wrap: wrap;
   flex-grow: 1;
   border-bottom: 1px solid #e5e5e5;
 }

@@ -5,16 +5,23 @@ import { HeadNavigation } from './pages/HeadNavigation'
 import { ProfilePage } from './pages/Profile/profile.js'
 import { ProfileSettings } from './pages/ProfileSetting'
 import { parseRequestUrl, pageToBeRender } from './util.js'
+import { Explore } from './pages/explore'
+import { Notification } from './pages/notification'
+import { Message } from './pages/message'
+
 
 
 
 const routes = {
   '/home': Home,
   '/username/:id/:action': ProfilePage,
-  '/profile-settings': ProfileSettings
+  '/profile-settings': ProfileSettings,
+	'/explore': Explore,
+	'/notifications': Notification,
+	'/messages': Message,
 }
-const mainHeadNav = document.querySelector(".main-header");
-
+// const mainHeadNav = document.querySelector(".main-header");
+// console.log({mainHeadNav});
 const router = () => {
 	let response = parseRequestUrl()
 	if (response.resource === undefined) {
@@ -36,8 +43,8 @@ const router = () => {
 		'afterbegin',
 		HeadNavigation.render({ activeNav: response.resource }),
 	)
-	console.log(response.resource)
-	mainHeadNav.innerHTML = null
+	// console.log(response.resource)
+	// mainHeadNav.innerHTML = null
 	// mainHeadNav.insertAdjacentHTML("afterbegin", HeadNavigation.render({activeNav: response.resource}));
 }
 
